@@ -34,3 +34,25 @@ def read_one(id):
             404, "Board game with id {id} not found".format(id=id)
         )
     return boardgame_temp
+
+def create(boardgame):
+    id = boardgame.get("id", None)
+    name = boardgame.get("name", None)
+    publisher = boardgame.get("name", None)
+    quantity = str(boardgame.get("quantity", None))
+
+    #Is exist?
+    if boardgame not in BOARD_GAME and id is not None:
+        BOARD_GAME[id] = {
+            "id" : id,
+            "name" : name,
+            "publisher" : publisher,
+            "quantity" : quantity
+        }
+        return make_response(
+            "Board game {name} has been created successfully!".format(name = name), 201
+        )
+    else:
+        abort(
+            406, "Board game already exist."
+        )

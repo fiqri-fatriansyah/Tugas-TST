@@ -73,6 +73,45 @@
             "description" : "500 Internal server error"
           }
         }
+      },
+      "post" : {
+        "summary" : "Sends data containing information about a board game with parameter id.",
+        "operationId" : "list.create",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "xxxx"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Board_Game"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "401" : {
+            "description" : "401 Access unauthorized"
+          },
+          "403" : {
+            "description" : "403 Access forbidden"
+          },
+          "500" : {
+            "description" : "500 Internal server error"
+          }
+        }
       }
     }
   },
@@ -80,7 +119,7 @@
     "schemas" : {
       "Board_Game" : {
         "required" : [ "id", "name" ],
-        "type" : "array",
+        "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
@@ -96,7 +135,7 @@
             "example" : "Asmodus Inc."
           },
           "quantity" : {
-            "type" : "integer",
+            "type" : "string",
             "example" : 1
           }
         }
