@@ -38,7 +38,7 @@
     }
   }
 },
-"/boardgame/{id}" : {
+"/boardgame/list/{id}" : {
   "get" : {
     "summary" : "Returns every information about a board game with parameter id.",
     "parameters" : [ {
@@ -276,3 +276,27 @@
     }
   }
 }
+
+
+
+def create(boardgame):
+    id = boardgame.get("id", None)
+    name = boardgame.get("name", None)
+    publisher = boardgame.get("name", None)
+    quantity = str(boardgame.get("quantity", None))
+
+    #Is exist?
+    if boardgame not in BOARD_GAME and id is not None:
+        BOARD_GAME[id] = {
+            "id" = id,
+            "name" = name,
+            "publisher" = publisher,
+            "quantity" = quantity
+        }
+        return make_response{
+            "Board game named {name} with id {id} has been created successfully!".format(name = name, id = id), 201
+        }
+    else:
+        abort(
+            406, "Board game already exist."
+        

@@ -5,6 +5,10 @@
     "description" : "Prototype Board Game API Documentation for TST purpose.",
     "version" : "0.0.1"
   },
+  "servers" : [{
+    "url" : "https://localhost:2305/api/",
+    "description" : "Testing site for Board Game API."
+  }],
   "paths" : {
     "/boardgame/list" : {
       "get" : {
@@ -32,6 +36,44 @@
           }
         }
       }
+    },
+    "/boardgame/list/{id}" : {
+      "get" : {
+        "summary" : "Returns every information about a board game with parameter id.",
+        "operationId" : "list.read_one",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "xxxx"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Board_Game"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "401 Access unauthorized"
+          },
+          "403" : {
+            "description" : "403 Access forbidden"
+          },
+          "500" : {
+            "description" : "500 Internal server error"
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -41,7 +83,7 @@
         "type" : "array",
         "properties" : {
           "id" : {
-            "type" : "integer",
+            "type" : "string",
             "format" : "xxxx",
             "example" : 1
           },
