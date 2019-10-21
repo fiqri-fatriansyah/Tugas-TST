@@ -1,0 +1,278 @@
+,
+"/boardgame/list/search={name}" : {
+  "get" : {
+    "summary" : "Returns a list of all information about every board game that includes specific name.",
+    "parameters" : [ {
+      "name" : "name",
+      "in" : "path",
+      "required" : true,
+      "style" : "simple",
+      "explode" : false,
+      "schema" : {
+        "type" : "string"
+      }
+    } ],
+    "responses" : {
+      "200" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Board_Game"
+              }
+            }
+          }
+        }
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  }
+},
+"/boardgame/{id}" : {
+  "get" : {
+    "summary" : "Returns every information about a board game with parameter id.",
+    "parameters" : [ {
+      "name" : "id",
+      "in" : "path",
+      "required" : true,
+      "style" : "simple",
+      "explode" : false,
+      "schema" : {
+        "type" : "integer",
+        "format" : "xxxx"
+      }
+    } ],
+    "responses" : {
+      "200" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Board_Game"
+            }
+          }
+        }
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  },
+  "put" : {
+    "summary" : "Modifies data containing every information about a board game with parameter id.",
+    "parameters" : [ {
+      "name" : "id",
+      "in" : "path",
+      "required" : true,
+      "style" : "simple",
+      "explode" : false,
+      "schema" : {
+        "type" : "integer",
+        "format" : "xxxx"
+      }
+    } ],
+    "requestBody" : {
+      "content" : {
+        "application/x-www-form-urlencoded" : {
+          "schema" : {
+            "$ref" : "#/components/schemas/Board_Game"
+          }
+        }
+      },
+      "required" : true
+    },
+    "responses" : {
+      "200" : {
+        "description" : "OK"
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  },
+  "post" : {
+    "summary" : "Sends data containing every information about a board game with parameter id.",
+    "parameters" : [ {
+      "name" : "id",
+      "in" : "path",
+      "required" : true,
+      "style" : "simple",
+      "explode" : false,
+      "schema" : {
+        "type" : "integer",
+        "format" : "xxxx"
+      }
+    } ],
+    "requestBody" : {
+      "content" : {
+        "application/x-www-form-urlencoded" : {
+          "schema" : {
+            "$ref" : "#/components/schemas/Board_Game"
+          }
+        }
+      },
+      "required" : true
+    },
+    "responses" : {
+      "200" : {
+        "description" : "OK"
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  },
+  "delete" : {
+    "summary" : "Erases data containing every information about a board game with parameter id.",
+    "parameters" : [ {
+      "name" : "id",
+      "in" : "path",
+      "required" : true,
+      "style" : "simple",
+      "explode" : false,
+      "schema" : {
+        "type" : "integer",
+        "format" : "xxxx"
+      }
+    } ],
+    "responses" : {
+      "200" : {
+        "description" : "OK"
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  }
+},
+"/cafe/about" : {
+  "get" : {
+    "summary" : "Returns every general information about the cafe.",
+    "responses" : {
+      "200" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Cafe"
+            }
+          }
+        }
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  },
+  "put" : {
+    "summary" : "Modifies data containing general information about the cafe.",
+    "requestBody" : {
+      "content" : {
+        "application/x-www-form-urlencoded" : {
+          "schema" : {
+            "$ref" : "#/components/schemas/Cafe"
+          }
+        }
+      },
+      "required" : true
+    },
+    "responses" : {
+      "200" : {
+        "description" : "OK"
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  },
+  "post" : {
+    "summary" : "Sends data containing general information about the cafe.",
+    "requestBody" : {
+      "content" : {
+        "application/x-www-form-urlencoded" : {
+          "schema" : {
+            "$ref" : "#/components/schemas/Cafe"
+          }
+        }
+      },
+      "required" : true
+    },
+    "responses" : {
+      "200" : {
+        "description" : "OK"
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  },
+  "delete" : {
+    "summary" : "Erases data containing general information about the cafe.",
+    "responses" : {
+      "200" : {
+        "description" : "OK"
+      },
+      "401" : {
+        "description" : "401 Access unauthorized"
+      },
+      "403" : {
+        "description" : "403 Access forbidden"
+      },
+      "500" : {
+        "description" : "500 Internal server error"
+      }
+    }
+  }
+}
